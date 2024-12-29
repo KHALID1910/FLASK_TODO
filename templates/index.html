@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="container">
+    <h1 my-1>WELCOME TO MYTODO!!</h1>
+    <form action="/" method="POST">
+      <div class="mb-3 my-2">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <input type="text" class="form-control" name="desc" id="desc">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <div class="container my-3">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Sno</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Time</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in allTodo %}
+          <tr>
+            <th>{{loop.index}}</th>
+            <td>{{i.title}}</td>
+            <td>{{i.desc}}</td>
+            <td>{{i.date_created}}</td>
+            <td><a href="/" type="button" class="btn btn-primary btn-sm mx-1" >UPDATE</a>
+            <a href="/update/{{i.sno}}" type="button" class="btn btn-primary btn-sm mx-1" >DELETE</a></td>
+          </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </div>
+
+  {%endblock%}
