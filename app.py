@@ -16,10 +16,6 @@ class MyTodo(db.Model):
     def __repr__ (self) -> str:
         return f"{self.sno} - {self.title}"
 
-# todo = MyTodo(title="first", desc="my 1st todo")
-#     db.session.add(todo)
-#     db.session.commit()
-
 @app.route("/", methods=['GET', 'POST'])
 def hello_world():
     # return "<p>Hello, World!</p>"
@@ -45,8 +41,6 @@ def update(sno):
         db.session.commit()
         return redirect("/")
     data=MyTodo.query.filter_by(sno=sno).first()
-    # return "<p>Hello, World!</p>"
-    # return redirect("/")
     return render_template('update.html', data=data)
 
 @app.route("/delete/<int:sno>")
@@ -54,10 +48,8 @@ def delete(sno):
     data=MyTodo.query.filter_by(sno=sno).first()
     db.session.delete(data)
     db.session.commit()
-    # print(data)
-    # return "<p>Hello, World!</p>"
     return redirect("/")
-    # return render_template('index.html')
+    
 
 
 if __name__ == '__main__':
