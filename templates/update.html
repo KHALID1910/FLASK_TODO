@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%block body%}
+<div class="container">
+    <h1 my-1>UPDATE MYTODO!!</h1>
+    <form action="/update/{{data.sno}}" method="POST">
+      <div class="mb-3 my-2">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" value={{data.title}} aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <input type="text" class="form-control" name="desc" id="desc" value={{data.desc}}>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+{%endblock%}
